@@ -115,7 +115,7 @@ Resources:
                     Name: Staging
                     Actions:
                         - 
-                            Name: DeployInfrastructure
+                            Name: DeployInfrastructure2
                             RunOrder: 1
                             InputArtifacts:
                                 - Name: Built
@@ -129,7 +129,7 @@ Resources:
                                 RoleArn: !Sub ${CodePipelineCloudFormationRole.Arn}
                                 Capabilities: CAPABILITY_NAMED_IAM
                                 StackName: !Sub ${ApplicationName}-staging
-                                TemplatePath: Built::cloudformation/infrastructure.yml
+                                TemplatePath: Built::cloudformation/infrastructure2.yml
                                 TemplateConfiguration: Built::config/staging.conf
                                 ParameterOverrides: !Sub |
                                     {
@@ -179,7 +179,7 @@ Resources:
                                 RoleArn: !Sub ${CodePipelineCloudFormationRole.Arn}
                                 Capabilities: CAPABILITY_NAMED_IAM
                                 StackName: !Sub ${ApplicationName}-production
-                                TemplatePath: Built::cloudformation/infrastructure.yml
+                                TemplatePath: Built::cloudformation/infrastructure2.yml
                                 TemplateConfiguration: Built::config/production.conf
                                 ParameterOverrides: !Sub |
                                     {
@@ -419,7 +419,7 @@ Resources:
 Outputs:
 
     CodePipelineURL:
-        Description: The URL for the created pipeline
+        Description: The URL for the created pipeline fake change
         Value: !Sub https://${AWS::Region}.console.aws.amazon.com/codepipeline/home?region=${AWS::Region}#/view/${ApplicationName}      
 
     CodeDeployApplication:
